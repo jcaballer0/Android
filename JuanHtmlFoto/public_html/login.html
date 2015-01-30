@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">              
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet"> 
+        
+        <script type="text/javascript" charset="utf-8" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script> $(document).ready(function(){                
+                  $('#crear').click(function(){
+                    $.mobile.navigate("#crearUsuario");        
+                  });
+                                
+                  $('#guardar').click(function(){
+                    var vUsuario = $('#userNuevo').val();
+                    var vContrasena = $('#passNuevo').val();
+                    window.localStorage.setItem("usuario", vUsuario);
+                    window.localStorage.setItem("contrasena", vContrasena);                   
+                  });
+                  
+                  $('#mostrar').click(function(){
+                      var username = localStorage.getItem('usuario') || '<empty>';
+                      $('#usuario').val(username);
+                      var pass = localStorage.getItem('contrasena') || '<empty>';
+                      $('#contrasena').val(pass);                      
+                  });
+                  
+                  $('#validar').click(function(){
+                      var username = localStorage.getItem('usuario');                      
+                      var pass = localStorage.getItem('contrasena');
+                      var userNuevo = $('#usuario').val();
+                      var pass      = $('#contrasena').val();
+                      if (username === userNuevo){
+                           $.mobile.navigate("#hola");  
+                         }else{
+                             alert("usuario incorrecto");
+                         }
+                             
+                  });
+                });
+        </script>
+       
+           
+        
+    </head>
+    <body>
+        
+<!-- Start of first page -->
+        <div data-role="page" id="inicio">
+
+            <div data-role="header">
+		<h1>Acceso</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <p>Usuario</p>
+                <input type="text" name="user" id="usuario">
+                <p>Contrase&ntilde;a</p>
+                <input type="text" name="pass" id="contrasena">
+                <input type="button" class="ui-btn-inline" id="validar" value="Validar!">
+                <input type="button" class="ui-btn-inline" id="mostrar" value="Mostrar!">
+                <input type="button" class="ui-btn-inline" id="crear" value="Crear!">
+                <p><a href="#hola">bar</a></p>
+		<!--<p>View internal page called <a href="#bar">bar</a></p>-->
+            </div><!-- /content -->
+
+            <div data-role="footer">
+		<h4>App</h4>
+            </div><!-- /footer -->
+        </div><!-- /page -->
+
+        <!-- Start of second page -->
+        <div data-role="page" id="hola">
+
+            	<div data-role="header">
+                	<h1>Bar</h1>
+                </div><!-- /header -->
+
+                <div data-role="content">
+                    <p>Hola</p>
+                    <p><a href="#inicio">Devuelta al inicio</a></p>
+                    <p><a href="#crearUsuario">Crear Nuevo Usuario</a></p>
+                </div><!-- /content -->
+
+                <div data-role="footer">
+                	<h4>Page Footer</h4>
+                </div><!-- /footer -->
+        
+        </div><!-- /page -->
+        
+        <div data-role="page" id="crearUsuario">
+
+            	<div data-role="header">
+                	<h1>Nuevo Usuario</h1>
+                </div><!-- /header -->
+
+                <div data-role="content">
+                    <p>Usuario</p>
+                <input type="text" name="userNuevo" id="userNuevo">
+                <p>Contrase&ntilde;a</p>
+                <input type="text" name="passNuevo" id="passNuevo">
+                <p>Confirmar Contrase&ntilde;a</p>
+                <input type="text" name="passNuevoConfirmar">
+                <input type="button" class="ui-btn-inline" value="Crear Usuario" id="guardar">
+                    <p><a href="#inicio">Devuelta al inicio</a></p>
+                </div><!-- /content -->
+
+                <div data-role="footer">
+                	<h4>Page Footer</h4>
+                </div><!-- /footer -->
+        </div><!-- /page -->
+</body>   
+</html>

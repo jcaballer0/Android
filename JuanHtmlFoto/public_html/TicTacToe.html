@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <link href="css/jquery.mobile-1.4.5.min.css" rel="stylesheet">
+        
+        <!--  <link href="css/tictactoe.css" rel="stylesheet"> -->
+        <script type="text/javascript" charset="utf-8" src="js/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script> $(document).ready(function(){                
+                  $('#iniciar').click(function(){
+                    var vUsuario1 = $('#usuario1').val();
+                    var vUsuario2 = $('#usuario2').val();
+                    window.localStorage.setItem("usuario1", vUsuario1);
+                    window.localStorage.setItem("usuario2", vUsuario2);  
+                      
+                    $.mobile.navigate("#juego");
+                    
+                    
+                    
+                    var vMostrarUsuario1  = localStorage.getItem('usuario1') || '<empty>';
+                      $('#mostrarUser1').text(vMostrarUsuario1);
+                    var vMostrarUsuario2  = localStorage.getItem('usuario2') || '<empty>';
+                      $('#mostrarUser2').text(vMostrarUsuario2); 
+                    //alert(vMostrarUsuario1);
+                  });
+                                
+                  $('#guardar').click(function(){
+                    var vUsuario1 = $('#user1').val();
+                    var vUsuario2 = $('#user2').val();
+                    window.localStorage.setItem("usuario1", vUsuario1);
+                    window.localStorage.setItem("usuario2", vUsuario2);                   
+                  });
+                  
+                  $('#mostrar').click(function(){
+                      var username = localStorage.getItem('usuario') || '<empty>';
+                      $('#usuario').val(username);
+                      var pass = localStorage.getItem('contrasena') || '<empty>';
+                      $('#contrasena').val(pass);                      
+                  });
+                  
+                  var canvas = document.getElementById("myCanvas1");
+                  var ctx = canvas.getContext("2d");
+                  //var img = "Imagen/x.jpg";
+                      ctx.drawImage("Imagen/x.png", 3, 3);
+                 
+                /* var c = document.getElementById("myCanvas1");
+                        var ctx1 = c.getContext("2d");
+                        ctx1.beginPath();
+                        ctx1.fillStyle = "rgb(0, 0, 0)";
+                        ctx1.arc(70, 25, 20, 0, 2 * Math.PI, true);
+                        ctx1.fill();
+                        ctx1.stroke();
+                        
+                 var c = document.getElementById("myCanvas2");
+                        var ctx2 = c.getContext("2d");
+                        ctx2.beginPath();
+                        ctx2.arc(95,20,40,0,2*Math.PI);
+                        ctx2.stroke(); 
+                        
+                 var c = document.getElementById("myCanvas3");
+                        var ctx3 = c.getContext("2d");
+                        ctx3.beginPath();
+                        ctx3.arc(95,50,40,0,2*Math.PI);
+                        ctx3.stroke(); */       
+                });
+        </script>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+       <div data-role="page" id="inicio">
+            <div data-role="header">
+		<h1>TIC TAC TOE</h1>
+            </div><!-- /header -->
+
+            <div data-role="content">
+                <p>Usuario 1</p>
+                <input type="text" name="user" id="usuario1">
+                <p>Usuario 2</p>
+                <input type="text" name="user2" id="usuario2">
+                <input type="button" id="iniciar" value="Iniciar">
+                <input type="button" id="ranking" value="Ver Rankings">
+            </div><!-- /content -->
+            <div data-role="footer">
+		<h4>App</h4>
+            </div><!-- /footer -->
+        </div><!-- /page --> 
+        <div data-role="page" id="juego">
+
+            	<div data-role="header">
+                	<h1>Tic Tac Toe</h1>
+                </div><!-- /header -->
+                
+                
+
+                <div data-role="content">
+                    <p id="mostrarUser1">. </p>
+                    <p id="mostrarUser2">.. </p>
+                    
+                    <p>Image to use:</p>
+                    <img id="scream" src="Imagen/x.png" alt="x" width="40" height="40">
+                    <img id="scream" src="Imagen/o.png" alt="o" width="40" height="40">
+                    </br> 
+                     <!--<canvas width="50" height="50" id="board" onclick="javascript: clickHandler(event);"></canvas>-->
+                     <canvas id="myCanvas1" width="150" height="50"
+                             style="border:1px solid #000000;"></canvas>
+                     <canvas id="myCanvas2" width="150" height="50"
+                                style="border:1px solid #000000;"></canvas>
+                     <canvas id="myCanvas3" width="150" height="50"
+                                style="border:1px solid #000000;"></canvas>
+                     </br> 
+                     <canvas id="myCanvas4" width="150" height="50"
+                             style="border:1px solid #000000;"></canvas>
+                     <canvas id="myCanvas5" width="150" height="50"
+                                style="border:1px solid #000000;"></canvas>
+                     <canvas id="myCanvas6" width="150" height="50"
+                                style="border:1px solid #000000;"></canvas>
+                     
+                     </br> 
+                     <canvas id="myCanvas7" width="150" height="50"
+                             style="border:1px solid #000000;"></canvas>
+                     <canvas id="myCanvas8" width="150" height="50"
+                                style="border:1px solid #000000;"></canvas>
+                     <canvas id="myCanvas9" width="150" height="50"
+                                style="border:1px solid #000000;"></canvas>
+                    
+                     <p><a href="#inicio">Devuelta al inicio</a></p>
+                    
+                   
+                </div> <!-- /content -->
+
+                <div data-role="footer">
+                	<h4>end</h4>
+                </div><!-- /footer -->
+        
+        </div><!-- /page -->
+    </body>
+</html>
